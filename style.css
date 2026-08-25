@@ -1,71 +1,81 @@
-/* Base Styles & Background */
+/* Base Layout */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #0f172a, #1e293b);
     color: #f8fafc;
     margin: 0;
-    padding: 20px 10px;
+    padding: 20px 15px;
     min-height: 100vh;
 }
 
-/* Outer Card Container */
-div[style*="max-width: 400px"], 
-section {
-    background-color: #1e293b !important;
-    border: 1px solid #334155 !important;
-    border-radius: 12px !important;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    color: #e2e8f0 !important;
+/* 2-Column Responsive Grid */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Card Boxes */
+.card, .info-section {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.info-section {
+    max-width: 900px;
+    margin: 30px auto 0 auto;
+    text-align: left;
 }
 
 /* Headings & Text */
-h2, h3 {
-    color: #38bdf8 !important;
-    margin-bottom: 12px;
+h3 { color: #38bdf8; margin-top: 0; margin-bottom: 10px; }
+p, span { color: #cbd5e1; font-size: 14px; }
+.result-text { font-weight: bold; margin-top: 12px; color: #38bdf8; }
+
+/* Input Styling */
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
 }
 
-p, span, li {
-    color: #cbd5e1 !important;
-}
-
-/* Input Fields */
 input[type="number"] {
-    background-color: #0f172a !important;
-    color: #ffffff !important;
-    border: 1px solid #475569 !important;
-    border-radius: 6px !important;
-    font-size: 16px;
+    background-color: #0f172a;
+    color: #ffffff;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    padding: 8px;
+    width: 65px;
     text-align: center;
+    font-size: 15px;
     outline: none;
-    transition: all 0.2s ease-in-out;
 }
 
 input[type="number"]:focus {
-    border-color: #38bdf8 !important;
-    box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+    border-color: #38bdf8;
+    box-shadow: 0 0 6px rgba(56, 189, 248, 0.4);
 }
 
 /* Buttons */
+.button-group { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
+
 button {
+    background-color: #0284c7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
     font-weight: 600;
-    border-radius: 6px !important;
-    transition: transform 0.1s ease, background 0.2s ease;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
 }
 
-button:hover {
-    transform: translateY(-2px);
-    opacity: 0.9;
-}
-
-/* Primary Action Buttons */
-button[onclick*="clearFields"], 
-button[onclick*="simplifyRatio"] {
-    background-color: #0284c7 !important;
-}
-
-/* Preset Buttons */
-button[onclick*="applyPreset"] {
-    background-color: #334155 !important;
-    color: #38bdf8 !important;
-    border: 1px solid #475569 !important;
-}
+button:hover { background-color: #0369a1; transform: translateY(-1px); }
