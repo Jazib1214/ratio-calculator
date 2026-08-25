@@ -1,21 +1,39 @@
-/* Mobile Optimization & Responsive Scaling */
-@media screen and (max-width: 768px) {
-  body {
-    padding: 15px 10px;
-  }
-  
-  header h1 {
-    font-size: 1.6rem; /* Smaller font on phones so it doesn't overflow */
-  }
+/* Deep Space Gradient & Typography */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(circle at top, #1e1b4b 0%, #0f172a 50%, #030712 100%);
+    background-attachment: fixed;
+    color: #f8fafc;
+    margin: 0;
+    padding: 30px 15px;
+    min-height: 100vh;
+}
 
-  .card {
-    padding: 16px;
-  }
+/* Header Styling */
+header {
+    text-align: center;
+    margin-bottom: 35px;
+}
 
-  input[type="number"] {
-    width: 55px; /* Fits better on narrow mobile screens */
+header h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+}
+
+.author-tag {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 4px 14px;
+    border-radius: 20px;
     font-size: 14px;
-  }
+    font-weight: 600;
+    margin-top: 6px;
 }
 
 /* Scroll Prompt Banner */
@@ -30,11 +48,104 @@
   max-width: 960px;
   font-size: 14px;
   font-weight: 600;
-  animation: pulse 2s infinite;
 }
 
-@keyframes pulse {
-  0% { opacity: 0.6; }
-  50% { opacity: 1; }
-  100% { opacity: 0.6; }
+/* 2-Column Grid Container */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 22px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* Glassmorphism Card Design */
+.card, .info-section {
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 22px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.info-section {
+    max-width: 960px;
+    margin: 35px auto 0 auto;
+    text-align: left;
+}
+
+h3 {
+    color: #38bdf8;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.15rem;
+}
+
+p, span {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+.result-text {
+    font-weight: 700;
+    margin-top: 14px;
+    color: #38bdf8;
+    font-size: 15px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+input[type="number"] {
+    background: rgba(30, 41, 59, 0.8);
+    color: #ffffff;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 9px;
+    width: 70px;
+    text-align: center;
+    font-size: 15px;
+    outline: none;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+button {
+    background: linear-gradient(135deg, #0284c7, #2563eb);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Mobile Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 15px 10px;
+  }
+  header h1 {
+    font-size: 1.6rem;
+  }
+  .card {
+    padding: 16px;
+  }
+  input[type="number"] {
+    width: 55px;
+  }
 }
