@@ -3,70 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Ratio Calculator</title>
+    <title>Online Ratio & Proportion Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Main Calculator -->
-<div style="max-width: 400px; margin: 30px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; text-align: center;">
-  <h2>Ratio Calculator</h2>
-  <p>Solve for equivalent ratios: <strong>A : B = C : D</strong></p>
+  <header style="text-align: center; margin-bottom: 30px;">
+    <h1 style="color: #38bdf8; margin-bottom: 5px;">Ratio & Proportion Suite</h1>
+    <p style="color: #cbd5e1;">All-in-one free online tools for ratios, scaling, and proportions.</p>
+  </header>
 
-  <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 15px;">
-    <input type="number" id="a" placeholder="A" style="width: 60px; padding: 8px;" oninput="calculateRatio('a')">
-    <span>:</span>
-    <input type="number" id="b" placeholder="B" style="width: 60px; padding: 8px;" oninput="calculateRatio('b')">
-    <span>=</span>
-    <input type="number" id="c" placeholder="C" style="width: 60px; padding: 8px;" oninput="calculateRatio('c')">
-    <span>:</span>
-    <input type="number" id="d" placeholder="D" style="width: 60px; padding: 8px;" oninput="calculateRatio('d')">
+  <!-- Main Grid Container -->
+  <div class="grid-container">
+
+    <!-- Card 1: Main Calculator -->
+    <div class="card">
+      <h3>Equivalent Ratio Solver</h3>
+      <p>Solve for missing values: <strong>A : B = C : D</strong></p>
+      <div class="input-group">
+        <input type="number" id="a" placeholder="A" oninput="calculateRatio('a')">
+        <span>:</span>
+        <input type="number" id="b" placeholder="B" oninput="calculateRatio('b')">
+        <span>=</span>
+        <input type="number" id="c" placeholder="C" oninput="calculateRatio('c')">
+        <span>:</span>
+        <input type="number" id="d" placeholder="D" oninput="calculateRatio('d')">
+      </div>
+      <button onclick="clearFields()">Clear All</button>
+    </div>
+
+    <!-- Card 2: Aspect Ratio Presets -->
+    <div class="card">
+      <h3>Aspect Ratio Quick Presets</h3>
+      <p>Load standard video & image dimensions:</p>
+      <div class="button-group">
+        <button onclick="applyPreset(16, 9)">16:9 (Video)</button>
+        <button onclick="applyPreset(4, 3)">4:3 (Photo)</button>
+        <button onclick="applyPreset(1, 1)">1:1 (Square)</button>
+      </div>
+    </div>
+
+    <!-- Card 3: Ratio Simplifier -->
+    <div class="card">
+      <h3>Simplify a Ratio</h3>
+      <div class="input-group">
+        <input type="number" id="simpA" placeholder="12">
+        <span>:</span>
+        <input type="number" id="simpB" placeholder="16">
+      </div>
+      <button onclick="simplifyRatio()">Simplify</button>
+      <p id="simpResult" class="result-text"></p>
+    </div>
+
+    <!-- Card 4: Percentage to Ratio -->
+    <div class="card">
+      <h3>Percentage to Ratio</h3>
+      <div class="input-group">
+        <input type="number" id="percentVal" placeholder="e.g. 75">
+        <span>%</span>
+      </div>
+      <button onclick="convertPercentToRatio()">Convert</button>
+      <p id="percentResult" class="result-text"></p>
+    </div>
+
+    <!-- Card 5: Ratio Sharing / Division -->
+    <div class="card">
+      <h3>Ratio Sharing Tool</h3>
+      <p>Divide an amount into a ratio:</p>
+      <div class="input-group" style="margin-bottom: 10px;">
+        <input type="number" id="shareTotal" placeholder="Total (e.g. 100)">
+      </div>
+      <div class="input-group">
+        <input type="number" id="shareA" placeholder="Ratio A">
+        <span>:</span>
+        <input type="number" id="shareB" placeholder="Ratio B">
+      </div>
+      <button onclick="calculateShare()" style="margin-top: 10px;">Divide</button>
+      <p id="shareResult" class="result-text"></p>
+    </div>
+
+    <!-- Card 6: Map / Scale Calculator -->
+    <div class="card">
+      <h3>Map / Scale Calculator</h3>
+      <p>Scale real-world dimensions:</p>
+      <div class="input-group">
+        <input type="number" id="scaleMap" placeholder="Map Size">
+        <span>&rarr;</span>
+        <input type="number" id="scaleRatio" placeholder="Scale (1:X)">
+      </div>
+      <button onclick="calculateScale()" style="margin-top: 10px;">Calculate Real Size</button>
+      <p id="scaleResult" class="result-text"></p>
+    </div>
+
   </div>
 
-  <button onclick="clearFields()" style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Clear All</button>
-</div>
+  <script src="script.js"></script>
 
-<!-- Aspect Ratio Presets Section -->
-<div style="max-width: 400px; margin: 30px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; text-align: center;">
-  <h3>Aspect Ratio Quick Presets</h3>
-  <p style="font-size: 14px; color: #666;">Select a standard preset to quickly load numbers:</p>
-  
-  <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 15px;">
-    <button onclick="applyPreset(16, 9)" style="padding: 6px 12px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">16:9 (Video)</button>
-    <button onclick="applyPreset(4, 3)" style="padding: 6px 12px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">4:3 (Photo)</button>
-    <button onclick="applyPreset(1, 1)" style="padding: 6px 12px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">1:1 (Square)</button>
-  </div>
-</div>
-
-<!-- Ratio Simplifier Section -->
-<div style="max-width: 400px; margin: 30px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; text-align: center;">
-  <h3>Simplify a Ratio</h3>
-  <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 15px;">
-    <input type="number" id="simpA" placeholder="e.g. 12" style="width: 70px; padding: 8px;">
-    <span>:</span>
-    <input type="number" id="simpB" placeholder="e.g. 16" style="width: 70px; padding: 8px;">
-  </div>
-  <button onclick="simplifyRatio()" style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Simplify</button>
-  <p id="simpResult" style="font-weight: bold; margin-top: 15px;"></p>
-</div>
-
-<script src="script.js"></script>
-
-<section style="clear: both; max-width: 600px; margin: 40px auto; padding: 0 20px; font-family: sans-serif; color: #333; text-align: left;">
-  <h3>How to Use the Ratio Calculator</h3>
-  <p>Enter any 3 known numbers into the boxes to solve equivalent ratios (A : B = C : D). The missing value automatically calculates using cross-multiplication.</p>
-  
-  <h3>Ratio Formula</h3>
-  <p>The cross-multiplication formula used to solve missing values is:</p>
-  <p style="text-align: center; font-weight: bold;">A &times; D = B &times; C</p>
-  
-  <h3>Common Uses for Ratios</h3>
-  <ul>
-    <li><strong>Screen Resolutions:</strong> Calculate 16:9 aspect ratios for videos.</li>
-    <li><strong>Recipe Scaling:</strong> Scale cooking ingredients up or down.</li>
-    <li><strong>Scale Models:</strong> Calculate real dimensions from maps or blueprints.</li>
-  </ul>
-</section>
+  <section class="info-section">
+    <h3>How to Use the Tools</h3>
+    <p>Select any tool above to solve missing proportion values, simplify fractions into reduced ratio terms, divide financial amounts by ratios, or scale dimensions for blueprint models.</p>
+  </section>
 
 </body>
 </html>
