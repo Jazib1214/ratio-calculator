@@ -1,36 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online Ratio Calculator</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Ratio Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="calculator-card">
-    <h2>Ratio Calculator</h2>
-    <p>Solve for equivalent ratios: <strong>A : B = C : D</strong></p>
 
-    <div class="ratio-container">
-      <div class="ratio-pair">
-        <input type="number" id="a" placeholder="A" oninput="calculateRatio('a')">
-        <span>:</span>
-        <input type="number" id="b" placeholder="B" oninput="calculateRatio('b')">
-      </div>
-      
-      <div class="equals">=</div >
+<!-- Main Calculator -->
+<div style="max-width: 400px; margin: 30px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; text-align: center;">
+  <h2>Ratio Calculator</h2>
+  <p>Solve for equivalent ratios: <strong>A : B = C : D</strong></p>
 
-      <div class="ratio-pair">
-        <input type="number" id="c" placeholder="C" oninput="calculateRatio('c')">
-        <span>:</span>
-        <input type="number" id="d" placeholder="D" oninput="calculateRatio('d')">
-      </div>
-    </div>
-
-    <button onclick="clearFields()">Clear All</button>
+  <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 15px;">
+    <input type="number" id="a" placeholder="A" style="width: 60px; padding: 8px;" oninput="calculateRatio('a')">
+    <span>:</span>
+    <input type="number" id="b" placeholder="B" style="width: 60px; padding: 8px;" oninput="calculateRatio('b')">
+    <span>=</span>
+    <input type="number" id="c" placeholder="C" style="width: 60px; padding: 8px;" oninput="calculateRatio('c')">
+    <span>:</span>
+    <input type="number" id="d" placeholder="D" style="width: 60px; padding: 8px;" oninput="calculateRatio('d')">
   </div>
 
-  <script src="script.js"></script>
+  <button onclick="clearFields()" style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Clear All</button>
+</div>
+
+<!-- Aspect Ratio Presets Section -->
+<div style="max-width: 400px; margin: 30px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; text-align: center;">
+  <h3>Aspect Ratio Quick Presets</h3>
+  <p style="font-size: 14px; color: #666;">Select a standard preset to quickly load numbers:</p>
+  
+  <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 15px;">
+    <button onclick="applyPreset(16, 9)" style="padding: 6px 12px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">16:9 (Video)</button>
+    <button onclick="applyPreset(4, 3)" style="padding: 6px 12px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">4:3 (Photo)</button>
+    <button onclick="applyPreset(1, 1)" style="padding: 6px 12px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">1:1 (Square)</button>
+  </div>
+</div>
+
+<!-- Ratio Simplifier Section -->
+<div style="max-width: 400px; margin: 30px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; text-align: center;">
+  <h3>Simplify a Ratio</h3>
+  <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 15px;">
+    <input type="number" id="simpA" placeholder="e.g. 12" style="width: 70px; padding: 8px;">
+    <span>:</span>
+    <input type="number" id="simpB" placeholder="e.g. 16" style="width: 70px; padding: 8px;">
+  </div>
+  <button onclick="simplifyRatio()" style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Simplify</button>
+  <p id="simpResult" style="font-weight: bold; margin-top: 15px;"></p>
+</div>
+
+<script src="script.js"></script>
 
 <section style="clear: both; max-width: 600px; margin: 40px auto; padding: 0 20px; font-family: sans-serif; color: #333; text-align: left;">
   <h3>How to Use the Ratio Calculator</h3>
