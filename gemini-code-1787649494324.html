@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Ratio Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="calculator-card">
+    <h2>Ratio Calculator</h2>
+    <p>Solve for equivalent ratios: <strong>A : B = C : D</strong></p>
+
+    <div class="ratio-container">
+      <div class="ratio-pair">
+        <input type="number" id="a" placeholder="A" oninput="calculateRatio('a')">
+        <span>:</span>
+        <input type="number" id="b" placeholder="B" oninput="calculateRatio('b')">
+      </div>
+      
+      <div class="equals">=</div >
+
+      <div class="ratio-pair">
+        <input type="number" id="c" placeholder="C" oninput="calculateRatio('c')">
+        <span>:</span>
+        <input type="number" id="d" placeholder="D" oninput="calculateRatio('d')">
+      </div>
+    </div>
+
+    <button onclick="clearFields()">Clear All</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
