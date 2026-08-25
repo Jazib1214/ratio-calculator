@@ -50,7 +50,7 @@ function simplifyRatio() {
   let divisor = gcd(a, b);
   let simA = a / divisor;
   let simB = b / divisor;
-  res.innerText = `Simplified: ${simA} : ${simB}`;
+  res.innerText = "Simplified: " + simA + " : " + simB;
 }
 
 // 4. Percentage to Ratio
@@ -66,7 +66,7 @@ function convertPercentToRatio() {
   let denom = 100;
   let num = p;
   let divisor = gcd(num, denom);
-  res.innerText = `Ratio: ${num / divisor} : ${denom / divisor}`;
+  res.innerText = "Ratio: " + (num / divisor) + " : " + (denom / divisor);
 }
 
 // 5. Ratio Sharing
@@ -84,7 +84,7 @@ function calculateShare() {
   let sumParts = ra + rb;
   let partAVal = (total * ra) / sumParts;
   let partBVal = (total * rb) / sumParts;
-  res.innerText = `Shares: ${partAVal.toFixed(2)} and ${partBVal.toFixed(2)}`;
+  res.innerText = "Shares: " + partAVal.toFixed(2) + " and " + partBVal.toFixed(2);
 }
 
 // 6. Map / Scale Calculator
@@ -99,7 +99,7 @@ function calculateScale() {
   }
 
   let realSize = mapSize * scaleFactor;
-  res.innerText = `Real-World Size: ${realSize}`;
+  res.innerText = "Real-World Size: " + realSize;
 }
 
 // 7. Fraction to Ratio
@@ -114,7 +114,7 @@ function convertFractionToRatio() {
   }
 
   let divisor = gcd(num, den);
-  res.innerText = `Ratio: ${num / divisor} : ${den / divisor}`;
+  res.innerText = "Ratio: " + (num / divisor) + " : " + (den / divisor);
 }
 
 // 8. Ratio Comparator
@@ -134,11 +134,11 @@ function compareRatios() {
   let val2 = c / d;
 
   if (val1 > val2) {
-    res.innerText = `${a}:${b} is greater than ${c}:${d}`;
+    res.innerText = a + ":" + b + " is greater than " + c + ":" + d;
   } else if (val1 < val2) {
-    res.innerText = `${a}:${b} is less than ${c}:${d}`;
+    res.innerText = a + ":" + b + " is less than " + c + ":" + d;
   } else {
-    res.innerText = `Both ratios are equal!`;
+    res.innerText = "Both ratios are equal!";
   }
 }
 
@@ -156,7 +156,7 @@ function scaleRecipe() {
 
   let multiplier = newServ / oldServ;
   let newIng = oldIng * multiplier;
-  res.innerText = `Scaled Ingredient Amount: ${newIng.toFixed(2)}`;
+  res.innerText = "Scaled Ingredient Amount: " + newIng.toFixed(2);
 }
 
 // 10. 3-Part Ratio Solver
@@ -175,5 +175,5 @@ function solveThreePart() {
   let multiplier = targetA / a;
   let newB = b * multiplier;
   let newC = c * multiplier;
-  res.innerText = `New Ratio: ${targetA} : ${newB.toFixed(2)} : ${newC.toFixed(2)}`;
+  res.innerText = "New Ratio: " + targetA + " : " + newB.toFixed(2) + " : " + newC.toFixed(2);
 }
