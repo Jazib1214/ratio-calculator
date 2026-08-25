@@ -1,188 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Ratio & Proportion Calculator</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="google_verification_code_placeholder">
+  <title>Online Ratio & Proportion Calculator Suite</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <header>
-    <h1>Ratio &amp; Proportion Suite</h1>
-    <p>All-in-one professional tools for ratios, scaling, and proportions.</p>
-    <div class="author-tag">Made by Raja Jazib Hussain</div>
+  <div class="container">
+    <h1>Ratio & Proportion Calculator Suite</h1>
     
-    <div class="scroll-hint">
-      👇 Scroll down to explore all 10 calculators &amp; user instructions!
-    </div>
-  </header>
-
-  <!-- Main 10-Tool Grid Container -->
-  <div class="grid-container">
-
-    <!-- Instruction Card: How to Use -->
-    <div class="card" style="border: 2px dashed #38bdf8; background: rgba(56, 189, 248, 0.05);">
-      <h3>📖 How to Use This Suite</h3>
-      <p style="text-align: left; line-height: 1.5; color: #cbd5e1; margin-top: 10px;">
-        1. <strong>Pick a Tool:</strong> Scroll through the cards for ratios, percentages, recipes, or fractions.<br>
-        2. <strong>Type Numbers:</strong> Simply enter your values into any box.<br>
-        3. <strong>Instant Results:</strong> Answers calculate automatically as you type! Tap <em>Clear All</em> to reset.
-      </p>
-    </div>
-
-    <!-- Card 1: Main Calculator -->
-    <div class="card">
-      <h3>Equivalent Ratio Solver</h3>
-      <p>Solve for missing values: <strong>A : B = C : D</strong></p>
+    <!-- 1. Equivalent Ratio Solver -->
+    <div class="calculator-card">
+      <h2>Equivalent Ratio (A : B = C : D)</h2>
       <div class="input-group">
-        <input type="number" id="a" placeholder="A" oninput="calculateRatio('a')">
-        <span>:</span>
-        <input type="number" id="b" placeholder="B" oninput="calculateRatio('b')">
-        <span>=</span>
-        <input type="number" id="c" placeholder="C" oninput="calculateRatio('c')">
-        <span>:</span>
+        <input type="number" id="a" placeholder="A" oninput="calculateRatio('a')"> :
+        <input type="number" id="b" placeholder="B" oninput="calculateRatio('b')"> = 
+        <input type="number" id="c" placeholder="C" oninput="calculateRatio('c')"> :
         <input type="number" id="d" placeholder="D" oninput="calculateRatio('d')">
       </div>
-      <button onclick="clearFields()" style="margin-top: 12px;">Clear All</button>
+      <button onclick="clearFields()">Clear</button>
     </div>
 
-    <!-- Card 2: Aspect Ratio Presets -->
-    <div class="card">
-      <h3>Aspect Ratio Presets</h3>
-      <p>Load standard screen & video dimensions:</p>
-      <div class="button-group">
-        <button onclick="applyPreset(16, 9)">16:9 (Video)</button>
-        <button onclick="applyPreset(4, 3)">4:3 (Photo)</button>
-        <button onclick="applyPreset(1, 1)">1:1 (Square)</button>
-      </div>
+    <!-- 2. Aspect Ratio Presets -->
+    <div class="calculator-card">
+      <h2>Aspect Ratio Presets</h2>
+      <button onclick="applyPreset(16, 9)">16:9</button>
+      <button onclick="applyPreset(4, 3)">4:3</button>
+      <button onclick="applyPreset(1, 1)">1:1</button>
     </div>
 
-    <!-- Card 3: Ratio Simplifier -->
-    <div class="card">
-      <h3>Simplify a Ratio</h3>
-      <p>Reduce ratios to lowest integer terms:</p>
-      <div class="input-group">
-        <input type="number" id="simpA" placeholder="12">
-        <span>:</span>
-        <input type="number" id="simpB" placeholder="16">
-      </div>
-      <button onclick="simplifyRatio()" style="margin-top: 12px;">Simplify</button>
-      <p id="simpResult" class="result-text"></p>
+    <!-- 3. Simplify a Ratio -->
+    <div class="calculator-card">
+      <h2>Simplify Ratio</h2>
+      <input type="number" id="simpA" placeholder="First Number"> :
+      <input type="number" id="simpB" placeholder="Second Number">
+      <button onclick="simplifyRatio()">Simplify</button>
+      <p id="simpResult"></p>
     </div>
 
-    <!-- Card 4: Percentage to Ratio -->
-    <div class="card">
-      <h3>Percentage to Ratio</h3>
-      <p>Convert percentages directly to ratios:</p>
-      <div class="input-group">
-        <input type="number" id="percentVal" placeholder="e.g. 75">
-        <span>%</span>
-      </div>
-      <button onclick="convertPercentToRatio()" style="margin-top: 12px;">Convert</button>
-      <p id="percentResult" class="result-text"></p>
+    <!-- 4. Percentage to Ratio -->
+    <div class="calculator-card">
+      <h2>Percentage to Ratio</h2>
+      <input type="number" id="percentVal" placeholder="Enter %">
+      <button onclick="convertPercentToRatio()">Convert</button>
+      <p id="percentResult"></p>
     </div>
 
-    <!-- Card 5: Ratio Sharing / Division -->
-    <div class="card">
-      <h3>Ratio Sharing Tool</h3>
-      <p>Divide an amount into a target ratio:</p>
-      <div class="input-group" style="margin-bottom: 8px;">
-        <input type="number" id="shareTotal" placeholder="Total (100)">
-      </div>
-      <div class="input-group">
-        <input type="number" id="shareA" placeholder="Ratio A">
-        <span>:</span>
-        <input type="number" id="shareB" placeholder="Ratio B">
-      </div>
-      <button onclick="calculateShare()" style="margin-top: 12px;">Divide</button>
-      <p id="shareResult" class="result-text"></p>
+    <!-- 5. Ratio Sharing -->
+    <div class="calculator-card">
+      <h2>Ratio Sharing (Divide Amount)</h2>
+      <input type="number" id="shareTotal" placeholder="Total Amount"><br>
+      <input type="number" id="shareA" placeholder="Ratio Part A"> :
+      <input type="number" id="shareB" placeholder="Ratio Part B">
+      <button onclick="calculateShare()">Calculate Shares</button>
+      <p id="shareResult"></p>
     </div>
 
-    <!-- Card 6: Map / Scale Calculator -->
-    <div class="card">
-      <h3>Map / Scale Calculator</h3>
-      <p>Scale real-world blueprint distances:</p>
-      <div class="input-group">
-        <input type="number" id="scaleMap" placeholder="Map Size">
-        <span>&rarr;</span>
-        <input type="number" id="scaleRatio" placeholder="Scale (1:X)">
-      </div>
-      <button onclick="calculateScale()" style="margin-top: 12px;">Calculate Real Size</button>
-      <p id="scaleResult" class="result-text"></p>
+    <!-- 6. Map Scale Calculator -->
+    <div class="calculator-card">
+      <h2>Map / Scale Calculator</h2>
+      <input type="number" id="scaleMap" placeholder="Map Distance">
+      <input type="number" id="scaleRatio" placeholder="Scale Factor (e.g., 50000)">
+      <button onclick="calculateScale()">Calculate Real Size</button>
+      <p id="scaleResult"></p>
     </div>
 
-    <!-- Card 7: Fraction to Ratio -->
-    <div class="card">
-      <h3>Fraction to Ratio</h3>
-      <p>Convert numerators and denominators:</p>
-      <div class="input-group">
-        <input type="number" id="fracNum" placeholder="Top (3)">
-        <span>/</span>
-        <input type="number" id="fracDen" placeholder="Bottom (4)">
-      </div>
-      <button onclick="convertFractionToRatio()" style="margin-top: 12px;">Convert</button>
-      <p id="fracResult" class="result-text"></p>
+    <!-- 7. Fraction to Ratio -->
+    <div class="calculator-card">
+      <h2>Fraction to Ratio</h2>
+      <input type="number" id="fracNum" placeholder="Numerator"> /
+      <input type="number" id="fracDen" placeholder="Denominator">
+      <button onclick="convertFractionToRatio()">Convert</button>
+      <p id="fracResult"></p>
     </div>
 
-    <!-- Card 8: Compare Two Ratios -->
-    <div class="card">
-      <h3>Ratio Comparator</h3>
-      <p>Compare two separate ratio values:</p>
-      <div class="input-group" style="margin-bottom: 8px;">
-        <input type="number" id="compA" placeholder="A">
-        <span>:</span>
-        <input type="number" id="compB" placeholder="B">
-      </div>
-      <div class="input-group">
-        <input type="number" id="compC" placeholder="C">
-        <span>:</span>
-        <input type="number" id="compD" placeholder="D">
-      </div>
-      <button onclick="compareRatios()" style="margin-top: 12px;">Compare</button>
-      <p id="compResult" class="result-text"></p>
+    <!-- 8. Ratio Comparator -->
+    <div class="calculator-card">
+      <h2>Compare Two Ratios</h2>
+      <input type="number" id="compA" placeholder="A"> : <input type="number" id="compB" placeholder="B">
+      vs
+      <input type="number" id="compC" placeholder="C"> : <input type="number" id="compD" placeholder="D">
+      <button onclick="compareRatios()">Compare</button>
+      <p id="compResult"></p>
     </div>
 
-    <!-- Card 9: Recipe Scaler -->
-    <div class="card">
-      <h3>Recipe Ingredient Scaler</h3>
-      <p>Scale ingredients by batch size:</p>
-      <div class="input-group" style="margin-bottom: 8px;">
-        <input type="number" id="origServ" placeholder="Old Servings">
-        <input type="number" id="newServ" placeholder="New Servings">
-      </div>
-      <div class="input-group">
-        <input type="number" id="origIng" placeholder="Ingredient Amt">
-      </div>
-      <button onclick="scaleRecipe()" style="margin-top: 12px;">Scale Recipe</button>
-      <p id="recipeResult" class="result-text"></p>
+    <!-- 9. Recipe Scaler -->
+    <div class="calculator-card">
+      <h2>Recipe Scaler</h2>
+      <input type="number" id="origServ" placeholder="Original Servings">
+      <input type="number" id="newServ" placeholder="New Servings">
+      <input type="number" id="origIng" placeholder="Original Ingredient Amount">
+      <button onclick="scaleRecipe()">Scale Recipe</button>
+      <p id="recipeResult"></p>
     </div>
 
-    <!-- Card 10: 3-Part Ratio Solver -->
-    <div class="card">
-      <h3>3-Part Ratio Solver</h3>
-      <p>Scale A : B : C proportions:</p>
-      <div class="input-group" style="margin-bottom: 8px;">
-        <input type="number" id="partA" placeholder="A">
-        <span>:</span>
-        <input type="number" id="partB" placeholder="B">
-        <span>:</span>
-        <input type="number" id="partC" placeholder="C">
-      </div>
-      <div class="input-group">
-        <input type="number" id="partTarget" placeholder="New A Value">
-      </div>
-      <button onclick="solveThreePart()" style="margin-top: 12px;">Solve Tri-Ratio</button>
-      <p id="triResult" class="result-text"></p>
+    <!-- 10. 3-Part Ratio Solver -->
+    <div class="calculator-card">
+      <h2>3-Part Ratio Solver (A : B : C)</h2>
+      <input type="number" id="partA" placeholder="A"> :
+      <input type="number" id="partB" placeholder="B"> :
+      <input type="number" id="partC" placeholder="C"><br>
+      <input type="number" id="partTarget" placeholder="New value for A">
+      <button onclick="solveThreePart()">Solve 3-Part</button>
+      <p id="triResult"></p>
     </div>
 
   </div>
 
   <script src="script.js"></script>
-
-  <footer style="text-align: center; margin-top: 40px; padding: 20px 0; color: #64748b; font-size: 14px; border-top: 1px solid #1e293b;">
-    <p>Online Ratio &amp; Proportion Suite &bull; Designed &amp; Developed by <strong>Raja Jazib Hussain</strong></p>
-  </footer>
-
 </body>
 </html>
